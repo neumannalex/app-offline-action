@@ -1,7 +1,7 @@
 name: 'App-Offline'
 description: 'Creates or removes the app_offline.html file on/from a remote server via ftp'
 inputs:
-  state:
+  app_state:
     description: '(online|offline): Creates file if \'offline\' is specified and removes file if \'online\' is specified'
     required: true
   ftp_server:
@@ -37,6 +37,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.app_state }}
     - ${{ inputs.ftp_server }}
     - ${{ inputs.ftp_username }}
     - ${{ inputs.ftp_password }}
