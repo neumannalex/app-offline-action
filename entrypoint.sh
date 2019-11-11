@@ -22,16 +22,29 @@ fi;
 echo "Using $WDEFAULT_METHOD to connect to port $WDEFAULT_PORT"
 
 if [ $APP_STATE = "offline" ]; then
-    echo "Creating app_offline.html"
+    echo "Creating App_offline.htm"
     # todo: Datei erzeugen
+    cat > App_offline.htm << EOF
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Offline</title>
+</head>
+<body style="margin:3em;font-family:sans-serif">
+  <h2>Offline</h2>
+  <p>This site is offline for maintenance.</p>
+</body>
+</html>
+EOF
 
-    echo "Uploading app_offline.html"
+    echo "Uploading App_offline.htm"
     # todo: Datei hochladen
+    cat App_offline.htm
 
     # echo "Uploading files..."
     # lftp $WDEFAULT_METHOD://$FTP_SERVER:$WDEFAULT_PORT -u $FTP_USERNAME,$FTP_PASSWORD -e "set ftp:ssl-allow no; mirror $WDEFAULT_ARGS -R $WDEFAULT_LOCAL_DIR $WDEFAULT_REMOTE_DIR; quit"
 else
-    echo "Deleting app_offline.html"
+    echo "Deleting App_offline.htm"
     # todo: Datei löschen
 fi;
 
