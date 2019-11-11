@@ -39,13 +39,14 @@ EOF
 
     echo "Uploading App_offline.htm"
     # todo: Datei hochladen
-    cat App_offline.htm
+    lftp $WDEFAULT_METHOD://$FTP_SERVER:$WDEFAULT_PORT -u $FTP_USERNAME,$FTP_PASSWORD -e "set ftp:ssl-allow no; put App_offline.htm $WDEFAULT_ARGS -O $WDEFAULT_REMOTE_DIR; quit"
 
     # echo "Uploading files..."
     # lftp $WDEFAULT_METHOD://$FTP_SERVER:$WDEFAULT_PORT -u $FTP_USERNAME,$FTP_PASSWORD -e "set ftp:ssl-allow no; mirror $WDEFAULT_ARGS -R $WDEFAULT_LOCAL_DIR $WDEFAULT_REMOTE_DIR; quit"
 else
     echo "Deleting App_offline.htm"
     # todo: Datei löschen
+    lftp $WDEFAULT_METHOD://$FTP_SERVER:$WDEFAULT_PORT -u $FTP_USERNAME,$FTP_PASSWORD -e "set ftp:ssl-allow no;cd $WDEFAULT_REMOTE_DIR; rm App_offline.htm; quit"
 fi;
 
 echo "App-Offline Complete"
