@@ -5,7 +5,6 @@ set -eu
 
 echo "Starting App-Offline"
 
-WDEFAULT_APP_STATE=${APP_STATE:-"offline"}
 WDEFAULT_LOCAL_DIR=${LOCAL_DIR:-"."}
 WDEFAULT_REMOTE_DIR=${REMOTE_DIR:-"."}
 WDEFAULT_ARGS=${ARGS:-""}
@@ -22,7 +21,7 @@ fi;
 
 echo "Using $WDEFAULT_METHOD to connect to port $WDEFAULT_PORT"
 
-if [$WDEFAULT_APP_STATE = "offline"]; then
+if [ $APP_STATE = "offline" ]; then
     echo "Creating app_offline.html"
     # todo: Datei erzeugen
 
