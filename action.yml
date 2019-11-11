@@ -2,7 +2,7 @@ name: 'App-Offline'
 description: 'Creates or removes the app_offline.html file on/from a remote server via ftp'
 inputs:
   app_state:
-    description: '(online|offline): Creates file if \'offline\' is specified and removes file if \'online\' is specified'
+    description: '(online|offline): Creates file if offline is specified and removes file if online is specified'
     required: true
   ftp_server:
     description: 'FTP server name (you may need to specify a port)'
